@@ -45,7 +45,7 @@ import { UserServiceService } from '../services/user-service.service';
 // }
 export class AppLayoutComponent implements OnInit {
 
-  //constructor(private userService: UserServiceService, private Route: Route,) { }
+  constructor(private userService: UserServiceService) { }
 
   userDisplayName:string = '';
   ngOnInit() {
@@ -53,7 +53,7 @@ export class AppLayoutComponent implements OnInit {
      this.userDisplayName = String(window.localStorage.getItem('loggedUser'));
   }
 
-  // logout(){
-  //   this.userService.Logout();
-  // }
+  logout(){
+    this.userService.Logout();
+  }
 }

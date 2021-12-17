@@ -9,8 +9,13 @@ import { AccountServiceService } from '../app.services';
   providedIn: 'root'
 })
 export class UserServiceService {
+  // Logout() {
+  //   throw new Error('Method not implemented.');
+  // }
   Logout() {
-    throw new Error('Method not implemented.');
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('role');
+    this.router.navigate(['/login']);
   }
   Token: any;
 

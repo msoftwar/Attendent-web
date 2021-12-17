@@ -33,15 +33,10 @@ export class LoginComponent implements OnInit {
     this.Toastr.toastrConfig.progressBar = true;
     console.log(this.Username,this.Password)
     this.accountService.login(this.Username,this.Password).subscribe((resp)=>{
-      console.log(resp)
-    // Store access token, UserId and Role in local storage
-    // localStorage.setItem('access_token',resp.body.token);
-    // // localStorage.setItem('role',resp.Roles);
-    // var token = localStorage.getItem("access_token");
-    //  this.decoded = jwt_decode(token);
-          // localStorage.setItem('role',this.decoded.Roles);
+      //console.log(resp)
+   
           if(resp.code == 200){
-            console.log(resp.data.fullName)
+           // console.log(resp.data.fullName)
             window.localStorage.setItem('loggedUser', resp.data.fullName);
             this.router.navigate(['/dashboard']);
             this.Toastr.success('Welcome to M & S Attendance Portal' );
@@ -49,16 +44,14 @@ export class LoginComponent implements OnInit {
           // else{
           //   this.Toastr.error('Invalid Email Address or Password'); 
           // }
-    //  if(localStorage.getItem("role")=='Admin' || localStorage.getItem("role")=='PM' ){
+   
     
     },
     (err)=>{
       if(err.status == 400){
         this.Toastr.error('Invalid Email Address or Password'); 
       }
-    //  else if(err.status == ""){
-    //     this.Toastr.error('Input field should not be empty'); 
-    //   }
+   
       else{
         this.Toastr.error("Something went on the server side !!!");
       console.log(err);}

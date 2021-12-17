@@ -1,0 +1,35 @@
+<div class="dashboard-wrapper">
+    <div class="dashboard-influence">      
+        <div class="container-fluid dashboard-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <!-- <th scope="col">#</th> -->
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Phone</th>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let  item of GetAllUsersData">
+                                    <!-- <th scope="row">1</th> -->
+                                    <td>{{item.fullName}}</td>
+                                    <td>{{item.email}}</td>
+                                    <td>{{item.phone}}</td>              
+                                    <td><button type="button"  class="btn btn-primary" (click)="getUser(item._id)">Attendance History</button></td>
+                                    <td><button type="button" class="btn btn-success">Location History</button></td>
+                                </tr>                            
+                            </tbody>
+                        </table>                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="dashboard-wrapper">
+    <div class="dashboard-influence">      
+        <div class="container-fluid dashboard-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <!-- <th scope="col">#</th> -->
+                                <th scope="col">Name</th>
+                                <th scope="col">Time</th>
+                                <th scope="col">Status</th>
+                                <!-- <th scope="col">Location</th> -->
+                                <th scope="col"></th>
+                                
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let  item of AttendanceData">
+                                <!-- <th scope="row">1</th> -->
+                                <td>{{item.userData[0].fullName}}</td>
+                                <td>{{ConverDate(item.locationList[0].time)}}</td>
+                                <td>{{item.status}}</td>              
+                                <!-- <td>{{item.locationList[0].latitude}} , {{item.locationList[0].longitude}}</td> -->
+                                <td><button type="button" (click)="searchLocation(item.locationList[0].latitude,item.locationList[0].longitude)" class="btn btn-primary">View Location</button></td>
+                            </tr>                            
+                            </tbody>
+                        </table>                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

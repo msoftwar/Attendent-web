@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppLayoutComponent } from './app-layout/app-layout.component';
+import { AttendenceComponent } from './attendence/attendence.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { GetAllUsersComponent } from './get-all-users/get-all-users.component';
+import { UserComponent } from './user/user.component';
 // import { GoogleMapComponent } from './google-map/google-map.component';
 import { LoginComponent } from './login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -23,23 +26,54 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'signup',
-    component: SignupComponent,
+    path: 'attendance',
+    component: AppLayoutComponent,
     children: [
       {
-        path: '', component: SignupComponent, pathMatch: 'full'
+        path: '', component: AttendenceComponent, pathMatch: 'full'
       }
     ]
   },
   {
-    path: 'login',
-    component: LoginComponent,
+    path: 'get-all-users',
+    component: AppLayoutComponent,
     children: [
       {
-        path: '', component: LoginComponent, pathMatch: 'full'
+        path: '', component: GetAllUsersComponent, pathMatch: 'full'
       }
     ]
   },
+  {
+    path: 'user',
+    component: AppLayoutComponent,
+    children: [
+      {
+        path: '', component: UserComponent, pathMatch: 'full'
+      }
+    ]
+  },
+  // {
+  //   path: 'signup',
+  //   component: SignupComponent,
+  //   children: [
+  //     {
+  //       path: '', component: SignupComponent, pathMatch: 'full'
+  //     }
+  //   ]
+  // },
+  { 
+    path: 'login', 
+    component: LoginComponent
+  },
+  // {
+  //   path: 'login',
+  //   component: AppLayoutComponent,
+  //   children: [
+  //     {
+  //       path: '', component: LoginComponent, pathMatch: 'full'
+  //     }
+  //   ]
+  // },
   {
     path: 'forgot-password',
     component: ForgotPasswordComponent,
@@ -66,7 +100,8 @@ const routes: Routes = [
         path: '**', component: PageNotFoundComponent, pathMatch: 'full'
       }
     ]
-  }
+  },
+ 
  
   // {
   //   path: 'map',

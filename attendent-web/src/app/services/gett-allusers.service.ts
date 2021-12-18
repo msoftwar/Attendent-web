@@ -41,20 +41,7 @@ export class GettAllusersService {
     return this._http.get(FullUrl,requestOptions );
   }
 
-  GetSingleEmployee(id:any):Observable<any>{
-     let FullUrl = localStorage.getItem('BaseUrl')+"/api/users/getEmployee?id="+id;
-    const headerDict = {
-      'Access-Control-Allow-Origin':'*',
-      'Accept': 'application/json',
-      "Authorization": "Basic YWRtaW5Ac2tpbGxzb3J0ZWQuY29tOkRQYXNzQHdvcmQxMjAy"
 
-    }
-    const requestOptions = {                                                                                                                                                                                 
-      headers: new HttpHeaders(headerDict), 
-    };
-
-    return this._http.get(FullUrl,requestOptions );
-  }
 }
 
 

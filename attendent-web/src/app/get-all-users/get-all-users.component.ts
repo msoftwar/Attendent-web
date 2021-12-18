@@ -38,10 +38,8 @@ export class GetAllUsersComponent implements OnInit {
      
   }
   getUser(id:any){
-    this.GetAllUsersService.GetSingleEmployee(id).subscribe(data=>{
-      this.UserData = data.data;
-
-    })
+  window.localStorage.setItem('getObjUserId',id);
+  this.router.navigate(['/user']);
 }
 
 }

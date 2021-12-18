@@ -3,32 +3,42 @@
         <div class="container-fluid dashboard-content">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-12">
+                        <h1>{{DataToShow[0].name}} Attendance Report</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
                         <table class="table table-striped">
                             <thead>
-                            <tr>
-                                <!-- <th scope="col">#</th> -->
-                                <th scope="col">Name</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Phone</th>
-                                <th scope="col"></th>
-                                <th scope="col"></th>
-                                
-                            </tr>
+                                <tr>
+                                    <th scope="col">Date</th>
+                                    <!-- <th scope="col">Name</th> -->
+                                    <th scope="col">Checkin Time</th>
+                                    <th scope="col">Checkout Time</th>
+                                    <th scope="col">Summary</th>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
+                                    
+                                </tr>
                             </thead>
                             <tbody>
-                            <tr *ngFor="let  item of GetAllUsersData">
-                                <!-- <th scope="row">1</th> -->
-                                <td>{{item.fullName}}</td>
-                                <td>{{item.email}}</td>
-                                <td>{{item.phone}}</td>              
-                                <td><button type="button" class="btn btn-primary">Attendance History</button></td>
-                                <td><button type="button" class="btn btn-success">Location History</button></td>
-                            </tr>                            
+                                <tr *ngFor="let i of DataToShow">
+                                    <!-- <th scope="row">1</th> -->
+                                    <td>{{ConverDate(i.checkinTime)}}</td>
+                                    <!-- <td>{{i.name}}</td> -->
+                                    <td>{{ConvertTime(i.checkinTime)}}</td>    
+                                    <td>{{ConvertTime(i.checkoutTime)}}</td>
+                                    <td>{{i.summary}}</td> 
+
+                                    <td><button type="button"  class="btn btn-primary" (click)="searchLocation(i.checkinLat,i.checkinLong)">View Checkin Location</button></td>
+                                    <td><button type="button" class="btn btn-success" (click)="searchLocation(i.checkoutLat,i.checkoutLong)">View Checkout Location</button></td>
+                                </tr>                            
                             </tbody>
                         </table>                        
                     </div>
                 </div>
+            
             </div>
         </div>
     </div>

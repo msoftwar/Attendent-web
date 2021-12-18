@@ -27,5 +27,19 @@ export class AttendanceService {
 
     return this._http.get(FullUrl,requestOptions );
   }
+  GetSingleEmployeeAttendance(id:any):Observable<any>{
+    let FullUrl = localStorage.getItem('BaseUrl')+"/api/users/getEmployeeAttendance?id="+id;
+   const headerDict = {
+     'Access-Control-Allow-Origin':'*',
+     'Accept': 'application/json',
+     "Authorization": "Basic YWRtaW5Ac2tpbGxzb3J0ZWQuY29tOkRQYXNzQHdvcmQxMjAy"
+
+   }
+   const requestOptions = {                                                                                                                                                                                 
+     headers: new HttpHeaders(headerDict), 
+   };
+
+   return this._http.get(FullUrl,requestOptions );
+ }
 
 }

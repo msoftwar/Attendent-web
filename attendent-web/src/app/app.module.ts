@@ -23,7 +23,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AppLayoutComponent } from './app-layout/app-layout.component';
 import { LoginComponent } from './login/login.component';
 import { AttendenceComponent } from './attendence/attendence.component';
+import { UserComponent } from './user/user.component';
 import { GetAllUsersComponent } from './get-all-users/get-all-users.component';
+
 // import { AllpatientsComponent } from './allpatients/allpatients.component';
 // import { GenderComponent } from './gender/gender.component';
 // import { DistrictsComponent } from './districts/districts.component';
@@ -50,6 +52,7 @@ import { GetAllUsersComponent } from './get-all-users/get-all-users.component';
     LoginComponent,
     AttendenceComponent,
     GetAllUsersComponent,
+    UserComponent,
     // AllpatientsComponent,
     // GenderComponent,
     // DistrictsComponent,

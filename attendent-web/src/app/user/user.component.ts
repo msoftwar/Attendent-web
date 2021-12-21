@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
+import { DatePipe } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
 import { AttendanceService } from '../services/attendance.service';
 
@@ -11,14 +13,19 @@ import { AttendanceService } from '../services/attendance.service';
 export class UserComponent implements OnInit {
 
 DataToShow:Array<any>=new Array<any>();
-  constructor( private router: Router,private Toastr: ToastrService,private AttendanceService: AttendanceService,) { }
-
+ExportData:Array<any>=new Array<any>();
+  constructor( private router: Router,private Toastr: ToastrService,private AttendanceService: AttendanceService,public datepipe: DatePipe,) { }
+  InitialStartDate: Date = new Date;
+  InitialEndDate:  Date = new Date;
+  startDate: string = "";
+  endDate: string = "";
   ngOnInit(): void {
     this.AttendanceService.GetSingleEmployeeAttendance(window.localStorage.getItem('getObjUserId')).subscribe(data=>{
      // this.UserData = data.data;
       this.DataToShow=data.data
       console.log('hello')
       console.log("data",this.DataToShow)
+
 //      data.data.map((ud:any)=>{
 //        // console.log(ud)
 // if(ud.status=="checkin"){
@@ -56,6 +63,20 @@ DataToShow:Array<any>=new Array<any>();
     })
     
    
+  }
+  filterByTime(){
+    var startTime=new Date(this.InitialStartDate).getTime()-18000000
+    var endTime=new Date(this.InitialEndDate).getTime()+68399999
+    //18000000
+    console.log(new Date(startTime-18000000),new Date(endTime-18000000))
+    this.AttendanceService.FilterSingleEmployeeByTime(window.localStorage.getItem('getObjUserId'),startTime,endTime).subscribe(data=>{
+      this.DataToShow=data.data;
+       console.log(data)
+     },
+     error=>{
+       this.Toastr.error("Something went on the server side !!!");
+       console.log(error);
+     });
   }
   searchLocation(lat:number,long:number){
     window.open(`https://www.google.com/maps/?q=${lat},${long}`, "_blank")

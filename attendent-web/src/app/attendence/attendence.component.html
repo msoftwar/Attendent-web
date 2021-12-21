@@ -5,6 +5,28 @@
                 <div class="row">
                     <div class="col-md-12">
                         <h1>Over All Attendance</h1>
+                      
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="c-field u-mb-small">
+                            <label class="c-field__label" for="StartDate">Start Date : &nbsp;</label>
+                            <input class="c-input" type="date" [ngModel] ="InitialStartDate | date:'yyyy-MM-dd'" (ngModelChange)="InitialStartDate = $event"  id="Sdate"
+                            name="Sdate"
+                             placeholder="XYZ " required>
+                        </div>
+                    </div>
+                     <div class="col-md-3">
+                        <div class="c-field u-mb-small">
+                            <label class="c-field__label" for="EndDate">End Date : &nbsp;</label>
+                            <input class="c-input" type="date"  id="edate" [ngModel] ="InitialEndDate | date:'yyyy-MM-dd'" (ngModelChange)="InitialEndDate = $event"
+                            name="edate"
+                             placeholder="XYZ " required>
+                        </div>
+                    </div>
+                     <div class="col-md-4">
+                        <button id='filterbtn' type="button" (click)="filterByTime()" class="btn btn-success" ejs-button >Apply Filter</button>
                     </div>
                 </div>
                 <!-- <div class="row">

@@ -7,6 +7,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AttendanceService {
+  exportExcel(exportData: any, arg1: string) {
+    throw new Error('Method not implemented.');
+  }
 
   //constructor(private _http:HttpClient,private activatedRoute: ActivatedRoute, private auth: AccountServiceService, private router: Router) { }
 

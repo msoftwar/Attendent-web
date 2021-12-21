@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
 import { AttendanceService } from '../services/attendance.service';
+import { ExportService } from '../services/export.service';
 
 @Component({
   selector: 'app-user',
@@ -14,7 +15,8 @@ export class UserComponent implements OnInit {
 
 DataToShow:Array<any>=new Array<any>();
 ExportData:Array<any>=new Array<any>();
-  constructor( private router: Router,private Toastr: ToastrService,private AttendanceService: AttendanceService,public datepipe: DatePipe,) { }
+exportData: Array<any> = new Array();
+  constructor( private router: Router,private Toastr: ToastrService,private AttendanceService: AttendanceService,private exportService: ExportService, public datepipe: DatePipe,) { }
   InitialStartDate: Date = new Date;
   InitialEndDate:  Date = new Date;
   startDate: string = "";
@@ -23,6 +25,7 @@ ExportData:Array<any>=new Array<any>();
     this.AttendanceService.GetSingleEmployeeAttendance(window.localStorage.getItem('getObjUserId')).subscribe(data=>{
      // this.UserData = data.data;
       this.DataToShow=data.data
+      this.exportData = data.data2;
       console.log('hello')
       console.log("data",this.DataToShow)
 
@@ -71,6 +74,7 @@ ExportData:Array<any>=new Array<any>();
     console.log(new Date(startTime-18000000),new Date(endTime-18000000))
     this.AttendanceService.FilterSingleEmployeeByTime(window.localStorage.getItem('getObjUserId'),startTime,endTime).subscribe(data=>{
       this.DataToShow=data.data;
+      this.exportData = data.data2;
        console.log(data)
      },
      error=>{
@@ -78,6 +82,12 @@ ExportData:Array<any>=new Array<any>();
        console.log(error);
      });
   }
+
+  export() {
+    this.exportService.exportExcel(this.exportData, 'Attendance Excel');
+  
+}
+
   searchLocation(lat:number,long:number){
     window.open(`https://www.google.com/maps/?q=${lat},${long}`, "_blank")
   }

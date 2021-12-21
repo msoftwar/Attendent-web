@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { DatePipe } from '@angular/common';
 import { Timestamp } from 'rxjs';
 import { AttendanceService } from '../services/attendance.service';
+import { ExportService } from '../services/export.service';
 
 @Component({
   selector: 'app-attendence',
@@ -14,7 +15,8 @@ export class AttendenceComponent implements OnInit {
 
   AttendanceData: Array<any>= new Array();
   DataToShow: Array<any>= new Array();
-  constructor(private AttendanceService: AttendanceService, private router: Router,private Toastr: ToastrService,public datepipe: DatePipe,) { }
+  exportData: Array<any> = new Array();
+  constructor(private AttendanceService: AttendanceService,private exportService: ExportService, private router: Router,private Toastr: ToastrService,public datepipe: DatePipe,) { }
   InitialStartDate: Date = new Date;
   InitialEndDate:  Date = new Date;
   startDate: string = "";
@@ -24,6 +26,7 @@ export class AttendenceComponent implements OnInit {
     this.AttendanceService.GetAttendance().subscribe(data=>{
      this.AttendanceData = data.data;
      this.DataToShow=data.data2;
+     this.exportData = data.data3;
       console.log(data)
     },
     error=>{
@@ -40,6 +43,7 @@ export class AttendenceComponent implements OnInit {
     this.AttendanceService.FilterByTime(startTime,endTime).subscribe(data=>{
       this.AttendanceData = data.data;
       this.DataToShow=data.data2;
+      this.exportData = data.data3;
        console.log(data)
      },
      error=>{
@@ -47,6 +51,12 @@ export class AttendenceComponent implements OnInit {
        console.log(error);
      });
   }
+
+  export() {
+    this.exportService.exportExcel(this.exportData, 'Attendance Excel');
+  
+}
+
   searchLocation(lat:number,long:number){
     window.open(`https://www.google.com/maps/?q=${lat},${long}`, "_blank")
   }

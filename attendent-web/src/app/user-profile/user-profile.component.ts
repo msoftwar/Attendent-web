@@ -8,8 +8,10 @@ import { Component, OnInit } from '@angular/core';
 export class UserProfileComponent implements OnInit {
 
   constructor() { }
-
-  ngOnInit(): void {
+  userDisplayName:string = '';
+  ngOnInit() {
+    console.log(window.localStorage.getItem('loggedUser'))
+     this.userDisplayName = String(window.localStorage.getItem('loggedUser'));
   }
 
 }

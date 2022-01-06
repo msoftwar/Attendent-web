@@ -5,6 +5,8 @@ import { DatePipe } from '@angular/common';
 import { Timestamp } from 'rxjs';
 import { AttendanceService } from '../services/attendance.service';
 import { ExportService } from '../services/export.service';
+import { CreateUserService } from '../services/create-user.service';
+import { User } from '../Model/user.model';
 
 @Component({
   selector: 'app-create_user',
@@ -16,17 +18,17 @@ export class Create_UserComponent implements OnInit {
   AttendanceData: Array<any>= new Array();
   DataToShow: Array<any>= new Array();
   exportData: Array<any> = new Array();
-  constructor(private AttendanceService: AttendanceService,private exportService: ExportService, private router: Router,private Toastr: ToastrService,public datepipe: DatePipe,) { }
+  constructor(private AttendanceService: AttendanceService, private createUser: CreateUserService ,private exportService: ExportService, private router: Router,private Toastr: ToastrService,public datepipe: DatePipe,) { }
   InitialStartDate: Date = new Date;
   InitialEndDate:  Date = new Date;
   startDate: string = "";
   endDate: string = "";
-  fullname:string='';
+  fullName:string='';
   email:string='';
   employeeid:string='';
   employeetype:string='';
   phone:string=''
-  
+  userData: User = new User();
   ngOnInit(): void {
 
   
@@ -77,6 +79,24 @@ return String(t.toTimeString().split(' ')[0])
     console.log(new Date(Number(timeStamp)))
     var t=new Date(Number(timeStamp))
 return String(t.toDateString()+" "+t.toTimeString().split(' ')[0])
+  }
+
+  create(){
+    // var userData={
+    //   fullName:this.fullName,
+    //   emailAddress:this.email,
+    //   employeeId:this.employeeid,
+    //   employeetype:this.employeetype,
+    //   phoneNumber:this.phone
+    // }
+    this.createUser.create_user(this.userData).subscribe((resp)=>{
+      this.Toastr.success('Account Created Successfully ');
+      this.ngOnInit();
+      },
+      (error)=>{
+        this.Toastr.error("Something went on the server side !!!");
+        console.log(error);
+      });
   }
 
 }

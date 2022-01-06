@@ -21,27 +21,27 @@
                 </div>
   <div class="row">
                     <div class="col-md-3">
-                        <form>
+                        <form #submitForm= "ngForm" (ngSubmit)="create()">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Full Name</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Full Name">
+                                <input type="text" class="form-control" id="exampleInputEmail1" name="fullName" [(ngModel)]="userData.fullName" #fullName="ngModel" aria-describedby="emailHelp" placeholder="Full Name">
                                 
                               </div>
                             <div class="form-group">
                               <label for="exampleInputEmail1">Email Address</label>
-                              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                              <input type="email" class="form-control" id="exampleInputEmail1" name="emailAddress" [(ngModel)]="userData.emailAddress" #emailAddress="ngModel" aria-describedby="emailHelp" placeholder="Enter email">
                               <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Employee Id</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Employee Id">
+                                <input type="text" class="form-control" id="exampleInputEmail1" name="employeeId" [(ngModel)]="userData.employeeId" #employeeId="ngModel" aria-describedby="emailHelp" placeholder="Employee Id">
                                
                               </div>
                               <div class="form-group">
                             
                                     <label for="exampleFormControlSelect1">Employee Type</label>
-                                    <select class="form-control" id="exampleFormControlSelect1">
-                                      <option>Visiting</option>
+                                    <select class="form-control" id="exampleFormControlSelect1" name="employeetype" [(ngModel)]="userData.employeetype" #employeetype="ngModel">
+                                      <option selected>Visiting</option>
                                       <option>Contract Based</option>
                                       <option>Permanent</option>
                                   
@@ -50,7 +50,7 @@
                               </div>
                               <div class="form-group">
                                 <label for="exampleInputEmail1">Phone Number</label>
-                                <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Phone Number">
+                                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="phoneNumber" [(ngModel)]="userData.phoneNumber" #phoneNumber="ngModel" placeholder="Phone Number">
                                 <small id="emailHelp" class="form-text text-muted">Please use +92 instead of 0</small>
                               </div>
                             <!-- <div class="form-group">
@@ -61,7 +61,7 @@
                               <input type="checkbox" class="form-check-input" id="exampleCheck1">
                               <label class="form-check-label" for="exampleCheck1">Check me out</label>
                             </div> -->
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit"  class="btn btn-primary">Submit</button>
                           </form>
                     <!-- <div class="col-md-4">
                     </div> -->

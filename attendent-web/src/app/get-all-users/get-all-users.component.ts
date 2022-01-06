@@ -27,14 +27,14 @@ export class GetAllUsersComponent implements OnInit {
      });
 
 
-     this.GetAllUsersService.GetEmployee().subscribe(resp=>{
-      this.GetAllUsersData = resp.data;
-       console.log(resp)
-     },
-     error=>{
-       this.Toastr.error("Something went on the server side !!!");
-       console.log(error);
-     });
+    //  this.GetAllUsersService.GetEmployee().subscribe(resp=>{
+    //   this.GetAllUsersData = resp.data;
+    //    console.log(resp)
+    //  },
+    //  error=>{
+    //    this.Toastr.error("Something went on the server side !!!");
+    //    console.log(error);
+    //  });
      
   }
   getUser(id:any){

@@ -16,6 +16,7 @@
                                     <th scope="col">Name</th>
                                     <th scope="col">Email</th>
                                     <th scope="col">Phone</th>
+                                    <th scope="col">Type</th>
                                     <th scope="col"></th>
                                     <th scope="col"></th>
                                     
@@ -26,7 +27,8 @@
                                     <!-- <th scope="row">1</th> -->
                                     <td>{{item.fullName}}</td>
                                     <td>{{item.email}}</td>
-                                    <td>{{item.phone}}</td>              
+                                    <td>{{item.phone}}</td>
+                                    <td>{{item.employeetype}}</td>              
                                     <td><button type="button"  class="btn btn-primary" (click)="getUser(item._id)">Attendance History</button></td>
                                     <td><button type="button" class="btn btn-success">Location History</button></td>
                                 </tr>                            

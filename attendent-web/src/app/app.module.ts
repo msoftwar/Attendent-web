@@ -23,6 +23,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AppLayoutComponent } from './app-layout/app-layout.component';
 import { LoginComponent } from './login/login.component';
 import { AttendenceComponent } from './attendence/attendence.component';
+import { Create_UserComponent } from './create_user/create_user.component';
 import { UserComponent } from './user/user.component';
 import { GetAllUsersComponent } from './get-all-users/get-all-users.component';
 
@@ -53,6 +54,7 @@ import { GetAllUsersComponent } from './get-all-users/get-all-users.component';
     AttendenceComponent,
     GetAllUsersComponent,
     UserComponent,
+    Create_UserComponent
     // AllpatientsComponent,
     // GenderComponent,
     // DistrictsComponent,
